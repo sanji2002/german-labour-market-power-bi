@@ -92,8 +92,6 @@ This means that summing observations across all NACE categories without controll
 
 Explicit DAX measures were created rather than relying on uncontrolled implicit aggregations.
 
-### Job Vacancy Rate
-
 ```DAX
 Job Vacancy Rate =
 CALCULATE(
@@ -121,3 +119,87 @@ RETURN
         BLANK(),
         [Job Vacancy Rate] - PreviousYearRate
     )
+
+```
+
+## Analytical Findings
+
+### 1. German hiring pressure has cooled substantially
+
+Germany's overall Job Vacancy Rate reached **4.5% in 2022-Q4** before falling to **2.8% by 2025-Q4**. The latest rate was also **0.4 percentage points below 2024-Q4**.
+
+This indicates a substantial easing in vacancy pressure from the 2022 peak. However, the national figure conceals considerable differences between industries.
+
+**Business implication:** A national decline in vacancy pressure should not automatically be interpreted as uniformly easier recruitment across the economy.
+
+---
+
+### 2. The tightest industries remain well above the national rate
+
+At 2025-Q4, **Administrative & Support Service Activities recorded the highest JVR at 5.9%**, followed by **Construction at 4.9%**.
+
+Health & Social Work (**3.1%**) and Transportation & Storage (**2.9%**) also remained above Germany's overall rate of **2.8%**.
+
+**Business implication:** Organisations recruiting in these labour markets may continue to face greater competition for available workers even as aggregate German vacancy pressure declines.
+
+![Industry Analysis](industry_analysis.png)
+
+---
+
+### 3. Vacancy intensity and vacancy scale tell different stories
+
+A high vacancy rate does not necessarily mean that an industry has the largest absolute number of vacancies.
+
+In 2025-Q4:
+
+| Industry | JVR | Approx. vacancies |
+|---|---:|---:|
+| Administrative & Support | 5.9% | 200K |
+| Construction | 4.9% | 128K |
+| Health & Social Work | 3.1% | 202K |
+| Manufacturing | 1.8% | 134K |
+
+Health & Social Work had roughly as many vacancies as Administrative & Support despite a JVR almost **three percentage points lower**. Manufacturing provides an even stronger illustration: its **1.8% JVR** indicates comparatively low vacancy intensity, while the sector still contained approximately **134,000 vacancies**.
+
+**Business implication:** Workforce planning should distinguish **recruitment intensity from recruitment scale**. Large sectors can generate substantial hiring demand even when vacancies represent a relatively small proportion of total positions.
+
+---
+
+### 4. Hiring pressure has declined unevenly across industries
+
+Between 2022-Q4 and 2025-Q4, the largest declines in JVR occurred in:
+
+| Industry | JVR change |
+|---|---:|
+| Accommodation & Food Services | -3.8 pp |
+| Information & Communication | -3.2 pp |
+| Administrative & Support | -3.2 pp |
+| Professional, Scientific & Technical | -2.7 pp |
+| Transportation & Storage | -2.2 pp |
+| Construction | -2.0 pp |
+
+Administrative & Support is particularly notable. Its JVR fell by **3.2 percentage points**, yet at **5.9%** it remained the industry with the highest vacancy rate in 2025-Q4.
+
+A substantial decline in hiring pressure can therefore coexist with persistent relative tightness.
+
+---
+
+### 5. Germany occupies a middle position in the available European benchmark
+
+For countries with comparable A-S overall-economy observations in the selected extract, the 2025-Q4 JVR was:
+
+- **Netherlands: 3.9%**
+- **Germany: 2.8%**
+- **Poland: 0.7%**
+
+Germany therefore stood **1.1 percentage points below the Netherlands** and **2.1 percentage points above Poland**.
+
+![European Benchmark](european_benchmark.png)
+
+**Business implication:** Recruitment conditions should not be inferred from a single concept of the "European labour market". Even within the available comparable sample, vacancy pressure differs substantially between national labour markets.
+
+## Overall Conclusion
+
+Germany's labour market has cooled substantially since its 2022 vacancy peak, but the aggregate decline masks very different sector conditions. Recruitment pressure remains elevated in several industries, while large sectors can continue to generate substantial hiring demand despite relatively modest vacancy rates.
+
+The analysis therefore suggests that workforce decisions should consider **vacancy intensity, absolute hiring volume and change over time together**, rather than relying on a single headline vacancy indicator.
