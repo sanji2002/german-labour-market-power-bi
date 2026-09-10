@@ -63,3 +63,61 @@ The validation process followed the chain:
 | Germany JVR, 2025-Q4 | 2.8% | 2.8% | ✓ |
 | Germany peak JVR | 4.5%, 2022-Q4 | 4.5%, 2022-Q4 | ✓ |
 | 2025-Q4 YoY change | -0.4 pp | -0.4 pp | ✓ |
+
+## Data Model
+
+The transformed data were organised using a **star schema**, separating labour-market observations from the dimensions used to analyse them.
+
+The model contains:
+
+- **`FactLabourMarket`**: quarterly observations for job vacancies, occupied jobs and job vacancy rates
+- **`DimDate`**: calendar, year, quarter and year-quarter attributes supporting time analysis
+- **`DimCountry`**: geographic attributes
+- **`DimIndustry`**: NACE industry classifications and the distinction between overall-economy and industry observations
+- **`_Measures`**: a dedicated table containing analytical DAX measures
+
+Each dimension has a **one-to-many, single-direction relationship** with `FactLabourMarket`, keeping filtering predictable and avoiding unnecessary many-to-many or bidirectional relationships.
+
+Technical fields and metadata required for modelling and traceability were retained but hidden from the report view where appropriate.
+
+![Power BI Data Model](data_model.png)
+
+### Modelling consideration: avoiding double counting
+
+The Eurostat dataset contains both the **A-S overall-economy aggregate** and observations for individual NACE industries.
+
+This means that summing observations across all NACE categories without controlling the industry level could double count economic activity. Headline measures therefore use the **A-S aggregate**, while sector-level visuals use individual industry observations.
+
+## DAX Measures
+
+Explicit DAX measures were created rather than relying on uncontrolled implicit aggregations.
+
+### Job Vacancy Rate
+
+```DAX
+Job Vacancy Rate =
+CALCULATE(
+    AVERAGE(FactLabourMarket[Value]),
+    FactLabourMarket[Indicator_Code] = "JVR"
+)
+
+Job Vacancies =
+CALCULATE(
+    SUM(FactLabourMarket[Value]),
+    FactLabourMarket[Indicator_Code] = "JOBVAC"
+)
+
+Job Vacancy Rate PY =
+CALCULATE(
+    [Job Vacancy Rate],
+    DATEADD(DimDate[Date], -1, YEAR)
+)
+
+JVR YoY Change =
+VAR PreviousYearRate = [Job Vacancy Rate PY]
+RETURN
+    IF(
+        ISBLANK(PreviousYearRate),
+        BLANK(),
+        [Job Vacancy Rate] - PreviousYearRate
+    )
