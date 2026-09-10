@@ -203,3 +203,73 @@ Germany therefore stood **1.1 percentage points below the Netherlands** and **2.
 Germany's labour market has cooled substantially since its 2022 vacancy peak, but the aggregate decline masks very different sector conditions. Recruitment pressure remains elevated in several industries, while large sectors can continue to generate substantial hiring demand despite relatively modest vacancy rates.
 
 The analysis therefore suggests that workforce decisions should consider **vacancy intensity, absolute hiring volume and change over time together**, rather than relying on a single headline vacancy indicator.
+
+## Limitations & Analytical Boundaries
+
+The dashboard is designed to measure **vacancy pressure**, not to provide a complete diagnosis of labour-market conditions.
+
+- **Job vacancies do not automatically demonstrate a structural labour shortage.** A high JVR indicates elevated recruitment demand relative to occupied and vacant posts, but establishing a persistent shortage would require additional evidence such as unemployment, wages, vacancy duration, skills availability and occupational data.
+
+- **The analysis is industry-based rather than occupation-based.** NACE identifies the economic activity of the employer, not the occupation being recruited. A high vacancy rate in Construction, for example, does not establish which occupations or skills are responsible for that pressure.
+
+- **Vacancy intensity and vacancy volume are not interchangeable.** Large industries can generate substantial numbers of vacancies while maintaining comparatively low vacancy rates.
+
+- **Cross-country coverage is constrained by comparable observations in the selected extract.** International comparisons include only countries for which the A-S overall-economy aggregate was available. Missing national values were deliberately not reconstructed by averaging industry-level vacancy rates.
+
+- **The analysis is descriptive rather than causal.** The dashboard identifies when and where vacancy pressure changed, but does not establish why those changes occurred.
+
+- **Non-seasonally adjusted observations are used.** Quarterly movements may therefore contain seasonal effects. Greater emphasis is placed on longer-term patterns and year-on-year comparisons.
+
+> **Evidence boundary:** The dashboard can identify what changed, where it changed and the magnitude of that change. It cannot, by itself, establish why the change occurred.
+
+## Dashboard Design
+
+The final report follows a three-page analytical journey:
+
+### Executive Overview
+Provides the headline German labour-market trend, current and peak vacancy rates, year-on-year movement and industries experiencing the highest current vacancy pressure.
+
+### Industry Analysis
+Separates **vacancy intensity, vacancy volume and change over time**, allowing sector conditions to be examined from multiple perspectives.
+
+### European Benchmark
+Places Germany within the available comparable international sample using both current-period comparisons and historical trends.
+
+Consistent navigation, benchmark lines, cross-highlighting, tooltips and source attribution were used throughout the report. Technical fields were hidden from the reporting layer where appropriate, while explicit DAX measures controlled the principal calculations.
+
+## Skills Demonstrated
+
+| Area | Application |
+|---|---|
+| **Business Analysis** | Translated a broad labour-market question into measurable analytical dimensions, KPIs and a structured decision-support dashboard |
+| **Power BI** | Built a three-page interactive report using KPI cards, trend analysis, industry comparisons, cross-highlighting, tooltips and benchmark lines |
+| **Power Query** | Cleaned and transformed Eurostat SDMX data into an analysis-ready structure |
+| **Data Quality** | Diagnosed a decimal-precision transformation error, identified its root cause and validated corrected outputs against source observations |
+| **Data Modelling** | Designed a star schema with date, country and industry dimensions and controlled one-to-many relationships |
+| **DAX** | Developed explicit measures for vacancy rates, volumes, time intelligence, historical peaks, industry changes and country comparisons |
+| **KPI Design** | Distinguished vacancy intensity, absolute vacancy scale and changes in pressure over time |
+| **Data Visualisation** | Structured the dashboard around national overview, sector diagnosis and international comparison |
+| **Analytical Reasoning** | Converted statistical observations into decision-relevant findings while maintaining clear evidence and causal boundaries |
+
+## Data Source
+
+**Eurostat Job Vacancy Statistics**  
+Dataset: `jvs_q_nace2`  
+Frequency: Quarterly  
+Period analysed: **2015-Q1 to 2025-Q4**  
+Seasonal adjustment: **Non-seasonally adjusted**  
+Industry classification: **NACE Rev. 2**
+
+The project uses publicly available Eurostat labour-market statistics.
+
+## Project Files
+
+- `Germany_Labour_Market_PowerBI.pbix` – Power BI report
+- `executive_overview.png` – Executive dashboard
+- `industry_analysis.png` – Industry analysis
+- `european_benchmark.png` – European comparison
+- `data_model.png` – Power BI data model
+
+## Tools
+
+**Power BI Desktop · Power Query · DAX · Eurostat**
